@@ -1,0 +1,20 @@
+<form ng-hide="teamCtrl.characters.length >= 6" ng-submit="teamCtrl.addCharacter()">
+  <input type="text" ng-model="teamCtrl.name">
+  <input type="submit">
+</form>
+
+<h1>Your Team ({{teamCtrl.characters.length}}/6)</h1>
+
+<div ng-repeat="character in teamCtrl.characters">
+  <div>
+    <img ng-src="{{character.image}}">
+  </div>
+  <div>
+    <div>
+      <h2>{{character.name}}</h2>
+      <i ng-click="teamCtrl.deleteCharacter()" class="fa fa-times-circle"></i>
+    </div>
+
+    <p>{{character.description}}</p>
+  </div>
+</div>
