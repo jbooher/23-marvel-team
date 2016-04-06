@@ -33,6 +33,7 @@ class TeamsController {
 
   addCharacter() {
 		this.previewName = "";
+		this.name = "";
 
 		let char = new Character(
 			this.character.name,

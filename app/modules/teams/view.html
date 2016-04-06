@@ -18,14 +18,16 @@
 
   <div class="character-list">
     <div class="character" ng-repeat="character in teamCtrl.characters">
+
       <div class="character--left">
         <img class="character--image" ng-src="{{character.image}}">
       </div>
+
       <div class="character--right">
 
         <div class="character--top">
           <h2 class="character--name">{{character.name}}</h2>
-          <i class="character--delete" ng-click="teamCtrl.deleteCharacter()" class="fa fa-times-circle"></i>
+          <input type="submit" ng-click="teamCtrl.deleteCharacter(character)" value="Delete" class="character--delete">
         </div>
 
         <div class="character--bottom">
