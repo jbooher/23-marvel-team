@@ -1,20 +1,38 @@
-<form ng-hide="teamCtrl.characters.length >= 6" ng-submit="teamCtrl.addCharacter()">
-  <input type="text" ng-model="teamCtrl.name">
-  <input type="submit">
-</form>
+<div class="preview" ng-show="teamCtrl.previewName !== ''">
+  <img class="preview--image" ng-src="{{teamCtrl.previewImage}}">
+  <h2 class="preview--name" >{{teamCtrl.previewName}}</h2>
+  <form class="preview--form">
+    <input class="preview--cancel" ng-click="teamCtrl.previewRemove()" type="submit" value="Cancel">
+    <input class="preview--add" ng-click="teamCtrl.addCharacter()" type="submit" value="Add">
+  </form>
+  <p class="preview--description">{{teamCtrl.previewDesc}}</p>
+</div>
 
-<h1>Your Team ({{teamCtrl.characters.length}}/6)</h1>
+<div class="container">
+  <form class="input" ng-hide="teamCtrl.characters.length >= 6" ng-submit="teamCtrl.previewCharacter()">
+    <input class="input--text" type="text" ng-model="teamCtrl.name">
+    <input class="input--submit" type="submit">
+  </form>
 
-<div ng-repeat="character in teamCtrl.characters">
-  <div>
-    <img ng-src="{{character.image}}">
-  </div>
-  <div>
-    <div>
-      <h2>{{character.name}}</h2>
-      <i ng-click="teamCtrl.deleteCharacter()" class="fa fa-times-circle"></i>
+  <h1 class="team-header">Your Team ({{teamCtrl.characters.length}}/6)</h1>
+
+  <div class="character-list">
+    <div class="character" ng-repeat="character in teamCtrl.characters">
+      <div class="character--left">
+        <img class="character--image" ng-src="{{character.image}}">
+      </div>
+      <div class="character--right">
+
+        <div class="character--top">
+          <h2 class="character--name">{{character.name}}</h2>
+          <i class="character--delete" ng-click="teamCtrl.deleteCharacter()" class="fa fa-times-circle"></i>
+        </div>
+
+        <div class="character--bottom">
+          <p class="character--description">{{character.description}}</p>
+        </div>
+
+      </div>
     </div>
-
-    <p>{{character.description}}</p>
   </div>
 </div>

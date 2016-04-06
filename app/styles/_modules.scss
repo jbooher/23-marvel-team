@@ -1,31 +1,112 @@
-body {
-  font-face: Helvetica;
-  line-height: 1.4;
+// body {
+//   background-color: #000;
+//   color: #fff;
+// }
+
+.preview, .character, .input {
+  &--image {
+    width: 400px;
+    border: 2px solid #000;
+    border-radius: 5px;
+  }
+
+  &--cancel, &--add, &--submit {
+    width: 120px;
+    height: 50px;
+    background-image: linear-gradient(to bottom, #0000cc, #3333ff);
+    font-size: 1.2em;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-image: linear-gradient(to bottom, #0000ff, #6666ff);
+    }
+  }
+
+  &--name {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  &--form {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  &--description {
+    width: 404px;
+    text-align: justify;
+  }
+}
+
+.preview {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  align-self: center;
+
+  &--text {
+    height: 50px;
+    width: 300px;
+    font-size: 1.2rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 0 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.team-header {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 3rem;
+}
+
+.character-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .character {
-  vertical-align: top;
+  display: flex;
+  width: 100%;
+
+  &--left {
+    width: 25%;
+  }
 
   &--image {
-    width: 125px;
-    border: 1px solid #000;
+    width: 100%;
   }
 
-  td:first-child {
-    padding: 0 1rem 0 0;
+  &--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  h1 {
-    margin: 0;
-  }
-
-  p {
-    text-align: justify;
-  }
-
-  &--delete {
-    color: crimson;
-    font-size: 1.8rem;
-  }
-
 }

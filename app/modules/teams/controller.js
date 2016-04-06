@@ -6,29 +6,40 @@ class TeamsController {
     this._$http = $http;
 		this.name = "";
 		this.characters = [];
+		this.previewName = "";
+	}
+
+	previewCharacter() {
+			this._$http
+				.get(`http://gateway.marvel.com:80/v1/public/characters?name=${this.name}&apikey=6e7bd33438a14b84d91097cd3cfc46b5`)
+				.then((response) => {
+					console.log(response);
+					this.character = response.data.data.results[0];
+					if(this.validateAdd(this.character)) {
+						this.previewName = this.character.name;
+						this.previewDesc = this.character.description;
+						this.previewImage = `${this.character.thumbnail.path}.${this.character.thumbnail.extension}`;
+					}
+			}).catch((error) => {
+				console.log(`Error: ${error}`);
+				alert(`Could not find that hero: ${this.name}`);
+			});
+	}
+
+	previewRemove() {
+		this.previewName = "";
+		this.name = "";
 	}
 
   addCharacter() {
-		this._$http
-			.get(`http://gateway.marvel.com:80/v1/public/characters?name=${this.name}&apikey=6e7bd33438a14b84d91097cd3cfc46b5`)
-			.then((response) => {
-				console.log(response);
-				let char = new Character(
-					response.data.data.results[0].name,
-					response.data.data.results[0].description,
-					`${response.data.data.results[0].thumbnail.path}.${response.data.data.results[0].thumbnail.extension}`);
-				console.log(char);
+		this.previewName = "";
 
-				if(this.validateAdd(char)) {
-					this.characters.push(char);
-				}
+		let char = new Character(
+			this.character.name,
+			this.character.description,
+			`${this.character.thumbnail.path}.${this.character.thumbnail.extension}`);
 
-				console.log(this.characters);
-				this.name = "";
-			}).catch((error) => {
-				console.log(`Error: ${error}`);
-				alert(`Could not find that hero: ${this.name}`)
-			})
+		this.characters.push(char);
 
   }
 
