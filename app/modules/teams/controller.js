@@ -11,7 +11,7 @@ class TeamsController {
 
 	previewCharacter() {
 			this._$http
-				.get(`http://gateway.marvel.com:80/v1/public/characters?name=${this.name}&apikey=6e7bd33438a14b84d91097cd3cfc46b5`)
+				.get(`http://localhost:8000/v1/public/characters?name=${this.name}`)
 				.then((response) => {
 					console.log(response);
 					this.character = response.data.data.results[0];
